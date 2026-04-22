@@ -1,0 +1,40 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rl_games"
+version = "0.1.0"
+description = "RL Games: a collection of reinforcement learning games."
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11 , <3.12"
+
+dependencies = [
+    "opencv-python>=4.8.0",
+    "gymnasium[atari]>=1.2.3",
+    "ale-py>=0.10.0",
+    "numpy>=2.4.2",
+    "ruff>=0.15.5",
+    "torch>=2.6.0",
+    "imageio[ffmpeg]>=2.34.0",
+    "torchvision>=0.21.0"
+]
+
+[project.scripts]
+rlgames = "rl_games.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rl_games"]
+
+# ── GPU: NVIDIA RTX 3070 ── CUDA 12.6 ────────────────────────────────
+# La RTX 3070 (Ampere, SM86) es compatible con CUDA 11.x y 12.x.
+# cu126 es la build CUDA más reciente soportada por PyTorch ~2.6+.
+[tool.uv.sources]
+torch      = { index = "pytorch-cuda" }
+torchvision = { index = "pytorch-cuda" }
+
+[[tool.uv.index]]
+name     = "pytorch-cuda"
+url      = "https://download.pytorch.org/whl/cu126"
+explicit = true
