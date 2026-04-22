@@ -22,7 +22,7 @@ El espacio de observación es una imagen RGB de dimensiones `(210, 160, 3)` — 
 El espacio de acciones es 4:
 
 | Acción | Efecto | Significado |
-|---|---|
+|---|---|---|
 | 0 | NOOP | no hacer nada |
 | 1 | FIRE |lanzar la pelota al inicio de cada vida |
 | 2 | Derecha | mover la paleta a la derecha |
